@@ -1,0 +1,315 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DF1CD4131CDDB85000ED0FAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CD4121CDDB85000ED0FAC /* AppDelegate.swift */; };
+		DF1CD4151CDDB85000ED0FAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CD4141CDDB85000ED0FAC /* ViewController.swift */; };
+		DF1CD4181CDDB85000ED0FAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF1CD4161CDDB85000ED0FAC /* Main.storyboard */; };
+		DF1CD41A1CDDB85000ED0FAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1CD4191CDDB85000ED0FAC /* Assets.xcassets */; };
+		DF1CD41D1CDDB85000ED0FAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF1CD41B1CDDB85000ED0FAC /* LaunchScreen.storyboard */; };
+		DF1CD4251CDDBCCA00ED0FAC /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CD4241CDDBCCA00ED0FAC /* DrawView.swift */; };
+		DF1CD4271CDE375900ED0FAC /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CD4261CDE375900ED0FAC /* DrawViewController.swift */; };
+		DF6521F81CE616AD006E6703 /* PictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6521F71CE616AD006E6703 /* PictureView.swift */; };
+		DFE505901CE8ACC400AD8047 /* StampSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE5058F1CE8ACC400AD8047 /* StampSystem.swift */; };
+		DFFE6D881CE4A5FA0005CE55 /* KikurageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFE6D871CE4A5FA0005CE55 /* KikurageButton.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DF1CD40F1CDDB85000ED0FAC /* AURI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AURI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF1CD4121CDDB85000ED0FAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DF1CD4141CDDB85000ED0FAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DF1CD4171CDDB85000ED0FAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DF1CD4191CDDB85000ED0FAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DF1CD41C1CDDB85000ED0FAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DF1CD41E1CDDB85000ED0FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF1CD4241CDDBCCA00ED0FAC /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		DF1CD4261CDE375900ED0FAC /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		DF6521F71CE616AD006E6703 /* PictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureView.swift; sourceTree = "<group>"; };
+		DFE5058F1CE8ACC400AD8047 /* StampSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSystem.swift; sourceTree = "<group>"; };
+		DFFE6D871CE4A5FA0005CE55 /* KikurageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KikurageButton.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DF1CD40C1CDDB85000ED0FAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DF1CD4061CDDB85000ED0FAC = {
+			isa = PBXGroup;
+			children = (
+				DF1CD4111CDDB85000ED0FAC /* AURI */,
+				DF1CD4101CDDB85000ED0FAC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DF1CD4101CDDB85000ED0FAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DF1CD40F1CDDB85000ED0FAC /* AURI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DF1CD4111CDDB85000ED0FAC /* AURI */ = {
+			isa = PBXGroup;
+			children = (
+				DF1CD4121CDDB85000ED0FAC /* AppDelegate.swift */,
+				DF1CD4141CDDB85000ED0FAC /* ViewController.swift */,
+				DF1CD4161CDDB85000ED0FAC /* Main.storyboard */,
+				DF1CD4191CDDB85000ED0FAC /* Assets.xcassets */,
+				DF1CD41B1CDDB85000ED0FAC /* LaunchScreen.storyboard */,
+				DF1CD41E1CDDB85000ED0FAC /* Info.plist */,
+				DF1CD4241CDDBCCA00ED0FAC /* DrawView.swift */,
+				DFE5058F1CE8ACC400AD8047 /* StampSystem.swift */,
+				DF1CD4261CDE375900ED0FAC /* DrawViewController.swift */,
+				DFFE6D871CE4A5FA0005CE55 /* KikurageButton.swift */,
+				DF6521F71CE616AD006E6703 /* PictureView.swift */,
+			);
+			path = AURI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DF1CD40E1CDDB85000ED0FAC /* AURI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF1CD4211CDDB85000ED0FAC /* Build configuration list for PBXNativeTarget "AURI" */;
+			buildPhases = (
+				DF1CD40B1CDDB85000ED0FAC /* Sources */,
+				DF1CD40C1CDDB85000ED0FAC /* Frameworks */,
+				DF1CD40D1CDDB85000ED0FAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AURI;
+			productName = AURI;
+			productReference = DF1CD40F1CDDB85000ED0FAC /* AURI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DF1CD4071CDDB85000ED0FAC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = NeTGroup;
+				TargetAttributes = {
+					DF1CD40E1CDDB85000ED0FAC = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 9BYQ7BRR53;
+					};
+				};
+			};
+			buildConfigurationList = DF1CD40A1CDDB85000ED0FAC /* Build configuration list for PBXProject "AURI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DF1CD4061CDDB85000ED0FAC;
+			productRefGroup = DF1CD4101CDDB85000ED0FAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DF1CD40E1CDDB85000ED0FAC /* AURI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DF1CD40D1CDDB85000ED0FAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF1CD41D1CDDB85000ED0FAC /* LaunchScreen.storyboard in Resources */,
+				DF1CD41A1CDDB85000ED0FAC /* Assets.xcassets in Resources */,
+				DF1CD4181CDDB85000ED0FAC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DF1CD40B1CDDB85000ED0FAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFFE6D881CE4A5FA0005CE55 /* KikurageButton.swift in Sources */,
+				DF1CD4271CDE375900ED0FAC /* DrawViewController.swift in Sources */,
+				DF1CD4151CDDB85000ED0FAC /* ViewController.swift in Sources */,
+				DF6521F81CE616AD006E6703 /* PictureView.swift in Sources */,
+				DFE505901CE8ACC400AD8047 /* StampSystem.swift in Sources */,
+				DF1CD4131CDDB85000ED0FAC /* AppDelegate.swift in Sources */,
+				DF1CD4251CDDBCCA00ED0FAC /* DrawView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DF1CD4161CDDB85000ED0FAC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF1CD4171CDDB85000ED0FAC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DF1CD41B1CDDB85000ED0FAC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF1CD41C1CDDB85000ED0FAC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DF1CD41F1CDDB85000ED0FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DF1CD4201CDDB85000ED0FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DF1CD4221CDDB85000ED0FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AURI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.netgroup-jv.AURI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DF1CD4231CDDB85000ED0FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AURI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.netgroup-jv.AURI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DF1CD40A1CDDB85000ED0FAC /* Build configuration list for PBXProject "AURI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF1CD41F1CDDB85000ED0FAC /* Debug */,
+				DF1CD4201CDDB85000ED0FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF1CD4211CDDB85000ED0FAC /* Build configuration list for PBXNativeTarget "AURI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF1CD4221CDDB85000ED0FAC /* Debug */,
+				DF1CD4231CDDB85000ED0FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DF1CD4071CDDB85000ED0FAC /* Project object */;
+}
