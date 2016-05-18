@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF170B1C1CECA29B00691EF7 /* PairDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF170B1B1CECA29B00691EF7 /* PairDrawViewController.swift */; };
 		DF1CD4131CDDB85000ED0FAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CD4121CDDB85000ED0FAC /* AppDelegate.swift */; };
 		DF1CD4151CDDB85000ED0FAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CD4141CDDB85000ED0FAC /* ViewController.swift */; };
 		DF1CD4181CDDB85000ED0FAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF1CD4161CDDB85000ED0FAC /* Main.storyboard */; };
@@ -20,15 +21,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF170B1B1CECA29B00691EF7 /* PairDrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairDrawViewController.swift; sourceTree = "<group>"; };
 		DF1CD40F1CDDB85000ED0FAC /* AURI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AURI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF1CD4121CDDB85000ED0FAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DF1CD4141CDDB85000ED0FAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DF1CD4141CDDB85000ED0FAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		DF1CD4171CDDB85000ED0FAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DF1CD4191CDDB85000ED0FAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF1CD41C1CDDB85000ED0FAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF1CD41E1CDDB85000ED0FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF1CD4241CDDBCCA00ED0FAC /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
-		DF1CD4261CDE375900ED0FAC /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		DF1CD4261CDE375900ED0FAC /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawViewController.swift; path = ../DrawViewController.swift; sourceTree = "<group>"; };
 		DF6521F71CE616AD006E6703 /* PictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureView.swift; sourceTree = "<group>"; };
 		DFE5058F1CE8ACC400AD8047 /* StampSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampSystem.swift; sourceTree = "<group>"; };
 		DFFE6D871CE4A5FA0005CE55 /* KikurageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KikurageButton.swift; sourceTree = "<group>"; };
@@ -45,6 +47,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF170B1A1CECA25E00691EF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF1CD4141CDDB85000ED0FAC /* ViewController.swift */,
+				DF1CD4261CDE375900ED0FAC /* DrawViewController.swift */,
+				DF170B1B1CECA29B00691EF7 /* PairDrawViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		DF1CD4061CDDB85000ED0FAC = {
 			isa = PBXGroup;
 			children = (
@@ -64,15 +76,14 @@
 		DF1CD4111CDDB85000ED0FAC /* AURI */ = {
 			isa = PBXGroup;
 			children = (
+				DF170B1A1CECA25E00691EF7 /* Controller */,
 				DF1CD4121CDDB85000ED0FAC /* AppDelegate.swift */,
-				DF1CD4141CDDB85000ED0FAC /* ViewController.swift */,
 				DF1CD4161CDDB85000ED0FAC /* Main.storyboard */,
 				DF1CD4191CDDB85000ED0FAC /* Assets.xcassets */,
 				DF1CD41B1CDDB85000ED0FAC /* LaunchScreen.storyboard */,
 				DF1CD41E1CDDB85000ED0FAC /* Info.plist */,
 				DF1CD4241CDDBCCA00ED0FAC /* DrawView.swift */,
 				DFE5058F1CE8ACC400AD8047 /* StampSystem.swift */,
-				DF1CD4261CDE375900ED0FAC /* DrawViewController.swift */,
 				DFFE6D871CE4A5FA0005CE55 /* KikurageButton.swift */,
 				DF6521F71CE616AD006E6703 /* PictureView.swift */,
 			);
@@ -151,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF170B1C1CECA29B00691EF7 /* PairDrawViewController.swift in Sources */,
 				DFFE6D881CE4A5FA0005CE55 /* KikurageButton.swift in Sources */,
 				DF1CD4271CDE375900ED0FAC /* DrawViewController.swift in Sources */,
 				DF1CD4151CDDB85000ED0FAC /* ViewController.swift in Sources */,
