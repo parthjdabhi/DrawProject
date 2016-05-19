@@ -57,10 +57,7 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
     func session(session: MCSession, didReceiveData data: NSData,fromPeer peerID: MCPeerID)  {
         // This needs to run on the main queue
         dispatch_async(dispatch_get_main_queue()) {
-//            let canvasInfo = NSKeyedUnarchiver.unarchiveObjectWithData(data)
-//            self.drawView.paths = (canvasInfo?.paths)!
-//            self.drawView.colors = (canvasInfo?.colors)!
-                print(data)
+            
         }
     }
     
@@ -89,9 +86,14 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
     }
     //キャンバスから指を離した時に呼ばれるメソッド
     func canvasTouchUp() {
-//        let msg = "hello!".dataUsingEncoding(NSUTF8StringEncoding,allowLossyConversion: false)
-        try! self.session.sendData(drawView.getCanvasForNSData(),toPeers: self.session.connectedPeers,withMode:MCSessionSendDataMode.Reliable)
+        do{
+//            self.session.sendData(drawView.getCanvasForNSData(),toPeers:self.session.connectedPeers,withMode:MCSessionSendDataMode.Reliable)
+            try! self.session.sendData(drawView.getCanvasForNSData(), toPeers: self.session.connectedPeers, withMode:MCSessionSendDataMode.Reliable)
+        }catch{
+            print("失敗")
+        }
         print("指を離したのでデータを送信")
+        print(drawView.getCanvasForNSData())
     }
 
     
