@@ -77,8 +77,15 @@ class DrawableView: UIView {
     }
     //自分(DrawView)に描かれているUIBezierPathや色情報をAnyObject型で返します
     func getCanvasForNSData()->NSData{
-        let canvas = [self.colors,self.paths]
+        let canvas = self.path!
         return NSKeyedArchiver.archivedDataWithRootObject(canvas)
+    }
+    //自分のpaths配列 または colors配列に追加します
+    func addStatus(data:NSData)->Void{
+        let s = NSKeyedUnarchiver.unarchiveObjectWithData(data)
+        self.paths.append(s as! UIBezierPath)
+        self.colors.append(self.penColor)
+        self.setNeedsDisplay()
     }
     
     
