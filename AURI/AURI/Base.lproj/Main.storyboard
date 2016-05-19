@@ -43,8 +43,7 @@
                                     <color key="titleColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="pairButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zOc-8U-WEH"/>
-                                    <segue destination="hRs-Fb-Ihv" kind="show" id="lnl-qE-S4Q"/>
+                                    <segue destination="7eD-Cu-Hdq" kind="show" id="37F-8b-IRi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,10 +82,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUu-e7-qFZ" customClass="DrawableView" customModule="AURI" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ub7-UL-SB7">
                                 <rect key="frame" x="265" y="0.0" width="55" height="60"/>
                                 <constraints>
@@ -166,6 +161,10 @@
                                     <constraint firstItem="sW0-ty-c5r" firstAttribute="leading" secondItem="g9Q-xe-WiW" secondAttribute="trailing" id="yuM-nD-2oB"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUu-e7-qFZ" customClass="DrawableView" customModule="AURI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -213,23 +212,29 @@
             <point key="canvasLocation" x="2530" y="-483"/>
         </scene>
         <!--Pair Draw View Controller-->
-        <scene sceneID="dix-VM-ild">
+        <scene sceneID="bPu-Wd-pNO">
             <objects>
-                <viewController id="hRs-Fb-Ihv" customClass="PairDrawViewController" customModule="AURI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7eD-Cu-Hdq" customClass="PairDrawViewController" customModule="AURI" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6QB-dM-l0Q"/>
-                        <viewControllerLayoutGuide type="bottom" id="9bV-uM-asy"/>
+                        <viewControllerLayoutGuide type="top" id="Zun-JV-ewN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wp6-9e-bAz"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Pw1-Cp-QFa">
+                    <view key="view" contentMode="scaleToFill" id="s6b-ye-bOy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="D3Q-oL-Xqd">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="trash" id="j5L-s0-ejg"/>
+                            <barButtonItem systemItem="add" id="JuM-Xn-ilW"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DHg-v3-Eth" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bA4-cr-L5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2530" y="157"/>
+            <point key="canvasLocation" x="2530" y="122"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IDQ-Pn-G3b">

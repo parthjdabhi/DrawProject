@@ -16,8 +16,7 @@ class DrawableView: UIView {
     var penSize:Int = 5
     var paths:[UIBezierPath] = []
     var colors:[UIColor] = []
-    
-    
+
     
     override func drawRect(rect: CGRect) {
         if !paths.isEmpty && !colors.isEmpty{
@@ -70,9 +69,16 @@ class DrawableView: UIView {
         }
         self.setNeedsDisplay()
     }
-    
+    //色をセットします
     func setColor(penColor:UIColor)->Void{
         self.penColor = penColor
     }
+    //自分(DrawView)に描かれているUIBezierPathや色情報をAnyObject型で返します
+    func getCanvasForAnyObject()->AnyObject{
+        let canvas = [self.colors,self.paths]
+        return canvas as AnyObject
+    }
+    
+    
     
 }
