@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     /////StoryBoard上のUI関係/////
     //drawView本体

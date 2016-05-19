@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class DrawableView: UIView {
+    var canvasTouchUpDelegate: CanvasTouchUpDelegate?
     
     var path:UIBezierPath?
     var penColor:UIColor = UIColor.blackColor()
@@ -60,6 +61,7 @@ class DrawableView: UIView {
         self.path?.addLineToPoint(point)
         self.paths.append(self.path!)
         self.setNeedsDisplay()
+        self.canvasTouchUpDelegate?.canvasTouchUp()
     }
     //キャンバスを削除します
     func clear()->Void{
@@ -74,11 +76,15 @@ class DrawableView: UIView {
         self.penColor = penColor
     }
     //自分(DrawView)に描かれているUIBezierPathや色情報をAnyObject型で返します
-    func getCanvasForAnyObject()->AnyObject{
+    func getCanvasForNSData()->NSData{
         let canvas = [self.colors,self.paths]
-        return canvas as AnyObject
+        return NSKeyedArchiver.archivedDataWithRootObject(canvas)
     }
     
     
     
+}
+//画面から指を離した時に発行するデリゲート
+protocol CanvasTouchUpDelegate {
+    func canvasTouchUp()
 }

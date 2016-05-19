@@ -9,8 +9,11 @@
 import UIKit
 import MultipeerConnectivity
 
-class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,MCSessionDelegate{
+class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,MCSessionDelegate,CanvasTouchUpDelegate{
 
+    
+    @IBOutlet weak var drawView: DrawableView!
+    
     //このサービスの名前
     let serviceType = "local-canvas"
     var browser : MCBrowserViewController!
@@ -20,7 +23,7 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.drawView.canvasTouchUpDelegate = self
         self.peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
         self.session = MCSession(peer: peerID)
         self.session.delegate = self
@@ -50,11 +53,15 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
+    // peerからデータを受信した時に呼ばる処理
     func session(session: MCSession, didReceiveData data: NSData,fromPeer peerID: MCPeerID)  {
-        // Called when a peer sends an NSData to us
-        
         // This needs to run on the main queue
+        dispatch_async(dispatch_get_main_queue()) {
+//            let canvasInfo = NSKeyedUnarchiver.unarchiveObjectWithData(data)
+//            self.drawView.paths = (canvasInfo?.paths)!
+//            self.drawView.colors = (canvasInfo?.colors)!
+                print(data)
+        }
     }
     
     // The following methods do nothing, but the MCSessionDelegate protocol
@@ -79,6 +86,12 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
                  didChangeState state: MCSessionState)  {
         // Called when a connected peer changes state (for example, goes offline)
         
+    }
+    //キャンバスから指を離した時に呼ばれるメソッド
+    func canvasTouchUp() {
+//        let msg = "hello!".dataUsingEncoding(NSUTF8StringEncoding,allowLossyConversion: false)
+        try! self.session.sendData(drawView.getCanvasForNSData(),toPeers: self.session.connectedPeers,withMode:MCSessionSendDataMode.Reliable)
+        print("指を離したのでデータを送信")
     }
 
     
