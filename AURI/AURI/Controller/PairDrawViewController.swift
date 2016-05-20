@@ -88,9 +88,7 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
     func canvasTouchUp() {
         do {
             let i = drawView.getCanvasForNSData()
-            try self.session.sendData(i,
-                                      toPeers: self.session.connectedPeers,
-                                      withMode: MCSessionSendDataMode.Unreliable)
+            try self.session.sendData(i,toPeers: self.session.connectedPeers,withMode: MCSessionSendDataMode.Unreliable)
         } catch {
             print(error)
         }

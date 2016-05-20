@@ -9,6 +9,28 @@
 import Foundation
 import UIKit
 
+class Canvas:NSObject,NSCoding{
+    var path:UIBezierPath?
+    var color:UIColor?
+    
+    init(path:UIBezierPath,color:UIColor) {
+        super.init()
+        self.path = path
+        self.color = color
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.path, forKey:"path")
+        aCoder.encodeObject(self.color, forKey:"color")
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.path = aDecoder.decodeObjectForKey("path") as? UIBezierPath
+        self.color = aDecoder.decodeObjectForKey("color") as? UIColor
+    }
+    
+}
+
 class DrawableView: UIView {
     var canvasTouchUpDelegate: CanvasTouchUpDelegate?
     
@@ -17,6 +39,7 @@ class DrawableView: UIView {
     var penSize:Int = 5
     var paths:[UIBezierPath] = []
     var colors:[UIColor] = []
+    var canvas:Canvas?
 
     
     override func drawRect(rect: CGRect) {
@@ -61,6 +84,7 @@ class DrawableView: UIView {
         self.path?.addLineToPoint(point)
         self.paths.append(self.path!)
         self.setNeedsDisplay()
+        self.canvas = Canvas(path:self.path!, color:color)
         self.canvasTouchUpDelegate?.canvasTouchUp()
     }
     //キャンバスを削除します
@@ -77,14 +101,14 @@ class DrawableView: UIView {
     }
     //自分(DrawView)に描かれているUIBezierPathや色情報をAnyObject型で返します
     func getCanvasForNSData()->NSData{
-        let canvas = self.path!
-        return NSKeyedArchiver.archivedDataWithRootObject(canvas)
+        let canvas = self.canvas
+        return NSKeyedArchiver.archivedDataWithRootObject(canvas!)
     }
     //自分のpaths配列 または colors配列に追加します
     func addStatus(data:NSData)->Void{
         let s = NSKeyedUnarchiver.unarchiveObjectWithData(data)
-        self.paths.append(s as! UIBezierPath)
-        self.colors.append(self.penColor)
+        self.paths.append((s?.path)!)
+        self.colors.append((s?.color)!)
         self.setNeedsDisplay()
     }
     
