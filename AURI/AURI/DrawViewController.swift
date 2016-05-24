@@ -26,7 +26,8 @@ class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINav
     //線ボタン
     @IBOutlet weak var lineButton: UIButton!
     /////その他UI関係/////
-    var imageView:PictureView?
+    var pictureView:PictureView?
+    var imageViewAssist:ImageViewSizeAssist?
     
     @IBOutlet weak var trashArea: UIView!
     
@@ -107,12 +108,13 @@ class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINav
             
             //didFinishPickingMediaWithInfo通して渡された情報(選択された画像情報が入っている？)をUIImageにCastする
             //そしてそれを宣言済みのimageViewへ放り込む
-            if self.imageView == nil{
-                imageView = PictureView(superView:self.view,trashButton:trashButton,trashArea:self.trashArea)
+            if self.pictureView == nil{
+                self.pictureView = PictureView(superView:self.view,trashButton:trashButton,trashArea:self.trashArea)
             }
-            imageView!.frame = CGRectMake(self.view.frame.width / 2 - 100,self.view.frame.height/2 - 75, 200, 150)
-            imageView!.image = didFinishPickingMediaWithInfo[UIImagePickerControllerOriginalImage] as? UIImage
-            self.view.addSubview(imageView!)
+            self.pictureView!.frame = CGRectMake(self.view.frame.width / 2 - 100,self.view.frame.height/2 - 75, 200, 150)
+            self.pictureView!.image = didFinishPickingMediaWithInfo[UIImagePickerControllerOriginalImage] as? UIImage
+            imageViewAssist = ImageViewSizeAssist(imageView:pictureView!,superView:self.view)
+            self.view.addSubview(pictureView!)
         }
         
         //写真選択後にカメラロール表示ViewControllerを引っ込める動作
