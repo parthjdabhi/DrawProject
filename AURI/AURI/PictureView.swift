@@ -14,10 +14,10 @@ class PictureView:UIImageView{
     var movingX:CGFloat = 0
     var movingY:CGFloat = 0
     
-    var trashAreaX = 0
-    var trashAreaY = 0
-    var trashAreaXx = 0
-    var trashAreaYy = 0
+    static let minWitdth:CGFloat = 50
+    static let minHeight:CGFloat = 50
+    
+    var pictureTouchMove:PictureTouchMove?
     
     weak var superView:UIView?
     weak var trashButton:UIBarButtonItem?
@@ -73,6 +73,8 @@ class PictureView:UIImageView{
         }else{
             trashButton?.tintColor = UIColor(red:0,green:122/255,blue:1,alpha:1)
         }
+        pictureTouchMove?.pictureMove()
+
     }
     // タッチが終わった時の処理
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -82,7 +84,7 @@ class PictureView:UIImageView{
         }
     }
     
-    //タッチ点がViewに含まれているかの判定する関数です。
+    //タッチ点が指定Viewに含まれているかの判定する関数です。
     func pointIsContains(view:UIView)->Bool{
         if view.frame.origin.x <= movingX && movingX <= view.frame.origin.x + view.frame.width{
             if self.movingY >= view.frame.origin.y && self.movingY <= view.frame.origin.y + view.frame.height{
@@ -91,5 +93,8 @@ class PictureView:UIImageView{
         }
         return false
     }
-    
+}
+// Add Protocol
+protocol PictureTouchMove{
+    func pictureMove()
 }
