@@ -40,9 +40,14 @@ class DrawableView: UIView {
     var paths:[UIBezierPath] = []
     var colors:[UIColor] = []
     var canvas:Canvas?
+    
+    var lastTouchPoint:CGPoint = CGPointMake(0, 0)
+    var posX :CGFloat = 0
+    var posY :CGFloat = 0
 
     
     override func drawRect(rect: CGRect) {
+        
         if !paths.isEmpty && !colors.isEmpty{
             for i in 0 ..< paths.count {
                 colors[i].setStroke()
@@ -57,31 +62,54 @@ class DrawableView: UIView {
     
     // タッチされた時の処理
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let x = touches.first!.locationInView(self).x
-        let y = touches.first!.locationInView(self).y
+        let currentPoint = touches.first!.locationInView(self)
+        self.posX = lastTouchPoint.x
+        self.posY = lastTouchPoint.y
         //Pathを生成します
         self.path = UIBezierPath();
         //ペンサイズ設定です
         self.path!.lineWidth = CGFloat(self.penSize)
         self.path!.lineCapStyle = CGLineCap.Round
         self.path!.lineJoinStyle = CGLineJoin.Round
-        self.path!.moveToPoint(CGPoint(x: x-1,y: y-1))
+        self.path!.moveToPoint(CGPoint(x: posX-1,y: posY-1))
+        
+        lastTouchPoint = currentPoint;
     }
     
     // タッチが動いた時の処理
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let point = touches.first!.locationInView(self)
-        self.path?.addLineToPoint(point)
+        let touchEvent = touches.first!
+        let currentPoint = touchEvent.locationInView(self)
+        // ドラッグ前の座標
+        let pre = touchEvent.previousLocationInView(self)
+        let preDx = touchEvent.previousLocationInView(self).x
+        let preDy = touchEvent.previousLocationInView(self).y
+        // ドラッグ後の座標
+        let new = touchEvent.locationInView(self)
+        let newDx = touchEvent.locationInView(self).x
+        let newDy = touchEvent.locationInView(self).y
+        
+        var lllPoint:CGPoint = CGPointMake(newDx - preDx,newDy-preDy)
+        
+        var midPoint:CGPoint = CGPointMake((lastTouchPoint.x + currentPoint.x) / 2,(lastTouchPoint.y + currentPoint.y) / 2)
+   
+        self.path?.addQuadCurveToPoint(midPoint, controlPoint:lastTouchPoint)
+       
+        lastTouchPoint = currentPoint
+        
+//        print("preDx\(preDx)")
+//        print("newDx\(newDx)")
+//        print("---")
         self.setNeedsDisplay()
     }
     
     // タッチが終わった時の処理
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let point = touches.first!.locationInView(self)
+        let currentPoint = touches.first!.locationInView(self)
         //現在の色をセット
         let color = self.penColor
         self.colors.append(color)
-        self.path?.addLineToPoint(point)
+        self.path?.addQuadCurveToPoint(currentPoint, controlPoint:lastTouchPoint)
         self.paths.append(self.path!)
         self.setNeedsDisplay()
         self.canvas = Canvas(path:self.path!, color:color)
