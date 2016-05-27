@@ -17,6 +17,9 @@ class PictureView:UIImageView{
     static let minWitdth:CGFloat = 50
     static let minHeight:CGFloat = 50
     
+    static var x:CGFloat = 0 //DrawViewから見てのx座標
+    static var y:CGFloat = 0 //DrawViewから見てのy座標
+    
     var pictureTouchMove:PictureTouchMove?
     
     weak var superView:UIView?

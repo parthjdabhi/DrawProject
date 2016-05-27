@@ -43,18 +43,13 @@ class DrawableView: UIView {
     var imgFrames:[CGRect]=[]
     //通信用アイテム
     var canvas:Canvas!
-    var pictureViewRect:CGRect = CGRectZero
 
     
     
     override func drawRect(rect: CGRect) {
-        let context:CGContextRef = UIGraphicsGetCurrentContext()!
-        
         if !imgs.isEmpty && !imgFrames.isEmpty{
             for i in 0 ..< imgs.count {
-                //                CGContextTranslateCTM(context, 0,self.pictureViewRect.size.height);
-                //                CGContextScaleCTM(context, 1, -1);
-                CGContextDrawImage(context,imgFrames[i],imgs[i].CGImage)
+                imgs[i].drawInRect(imgFrames[i])
             }
         }
 
@@ -106,6 +101,7 @@ class DrawableView: UIView {
     //キャンバスを削除します
     func clear()->Void{
         paths.removeAll()
+        colors.removeAll()
         if let i = self.path{
             i.removeAllPoints()
         }

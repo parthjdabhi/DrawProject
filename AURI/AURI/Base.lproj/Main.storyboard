@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -85,99 +86,96 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ub7-UL-SB7">
                                 <rect key="frame" x="265" y="0.0" width="55" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="8xD-NS-JSZ"/>
-                                    <constraint firstAttribute="height" constant="60" id="kj0-90-TY6"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpT-tO-gKf">
-                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZd-qv-mwd" customClass="KikurageButton" customModule="AURI" customModuleProvider="target">
-                                        <rect key="frame" x="50" y="0.0" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="1jz-y2-ZjW"/>
-                                            <constraint firstAttribute="width" constant="50" id="gKi-8X-GfB"/>
-                                        </constraints>
-                                        <state key="normal" image="eraser"/>
-                                        <connections>
-                                            <action selector="eraserAction:" destination="AMQ-wy-5P1" eventType="touchUpInside" id="hWH-aD-jnm"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07m-zw-wy8">
-                                        <rect key="frame" x="100" y="0.0" width="120" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Wn3-Gf-y7G"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                        <state key="normal" title="■">
-                                            <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9Q-xe-WiW">
-                                        <rect key="frame" x="220" y="0.0" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="1vm-a4-t6Q"/>
-                                            <constraint firstAttribute="height" constant="50" id="aIx-Pr-8bP"/>
-                                        </constraints>
-                                        <state key="normal" image="circle_3"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YO3-ko-4wq" customClass="KikurageButton" customModule="AURI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="WWp-gw-BRe"/>
-                                            <constraint firstAttribute="width" constant="50" id="bZL-NF-RV2"/>
-                                        </constraints>
-                                        <state key="normal" image="pen"/>
-                                        <connections>
-                                            <action selector="penAction:" destination="AMQ-wy-5P1" eventType="touchUpInside" id="uXT-C3-aFx"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sW0-ty-c5r">
-                                        <rect key="frame" x="270" y="0.0" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Q6b-UV-h96"/>
-                                            <constraint firstAttribute="width" constant="50" id="Rgl-dt-7ci"/>
-                                        </constraints>
-                                        <state key="normal" image="line"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="sW0-ty-c5r" secondAttribute="trailing" id="7DY-Uc-S6k"/>
-                                    <constraint firstItem="rZd-qv-mwd" firstAttribute="leading" secondItem="YO3-ko-4wq" secondAttribute="trailing" id="7Xo-lI-c3t"/>
-                                    <constraint firstItem="07m-zw-wy8" firstAttribute="leading" secondItem="rZd-qv-mwd" secondAttribute="trailing" id="95f-cW-ful"/>
-                                    <constraint firstItem="YO3-ko-4wq" firstAttribute="leading" secondItem="lpT-tO-gKf" secondAttribute="leading" id="A7e-c5-tIp"/>
-                                    <constraint firstItem="g9Q-xe-WiW" firstAttribute="leading" secondItem="07m-zw-wy8" secondAttribute="trailing" id="DVY-tU-Wcq"/>
-                                    <constraint firstItem="YO3-ko-4wq" firstAttribute="top" secondItem="lpT-tO-gKf" secondAttribute="top" id="J1s-OW-sDS"/>
-                                    <constraint firstItem="rZd-qv-mwd" firstAttribute="leading" secondItem="YO3-ko-4wq" secondAttribute="trailing" id="Sor-eZ-xup"/>
-                                    <constraint firstItem="rZd-qv-mwd" firstAttribute="top" secondItem="lpT-tO-gKf" secondAttribute="top" id="Ted-UC-oYB"/>
-                                    <constraint firstItem="g9Q-xe-WiW" firstAttribute="top" secondItem="lpT-tO-gKf" secondAttribute="top" id="YZy-gZ-L5h"/>
-                                    <constraint firstItem="g9Q-xe-WiW" firstAttribute="leading" secondItem="07m-zw-wy8" secondAttribute="trailing" id="bnZ-iL-QUz"/>
-                                    <constraint firstItem="sW0-ty-c5r" firstAttribute="leading" secondItem="g9Q-xe-WiW" secondAttribute="trailing" id="e7E-T1-QTu"/>
-                                    <constraint firstItem="sW0-ty-c5r" firstAttribute="top" secondItem="lpT-tO-gKf" secondAttribute="top" id="m7y-fd-Mqk"/>
-                                    <constraint firstItem="07m-zw-wy8" firstAttribute="top" secondItem="lpT-tO-gKf" secondAttribute="top" id="sE1-L5-dM8"/>
-                                    <constraint firstItem="07m-zw-wy8" firstAttribute="leading" secondItem="rZd-qv-mwd" secondAttribute="trailing" id="v69-Y2-Uhl"/>
-                                    <constraint firstAttribute="height" constant="50" id="y15-Vy-4Ng"/>
-                                    <constraint firstItem="sW0-ty-c5r" firstAttribute="leading" secondItem="g9Q-xe-WiW" secondAttribute="trailing" id="yuM-nD-2oB"/>
+                                    <constraint firstAttribute="width" constant="55" id="PBs-Zu-Jhs"/>
+                                    <constraint firstAttribute="height" constant="60" id="rys-z2-hd9"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUu-e7-qFZ" customClass="DrawableView" customModule="AURI" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpT-tO-gKf">
+                                        <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9Q-xe-WiW">
+                                                <rect key="frame" x="220" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="4X0-6F-RTO"/>
+                                                </constraints>
+                                                <state key="normal" image="circle_3"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZd-qv-mwd" customClass="KikurageButton" customModule="AURI" customModuleProvider="target">
+                                                <rect key="frame" x="50" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="l0F-xf-bCz"/>
+                                                </constraints>
+                                                <state key="normal" image="eraser"/>
+                                                <connections>
+                                                    <action selector="eraserAction:" destination="AMQ-wy-5P1" eventType="touchUpInside" id="hWH-aD-jnm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07m-zw-wy8">
+                                                <rect key="frame" x="100" y="0.0" width="120" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                <state key="normal" title="■">
+                                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YO3-ko-4wq" customClass="KikurageButton" customModule="AURI" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="Y2h-FE-EoT"/>
+                                                </constraints>
+                                                <state key="normal" image="pen"/>
+                                                <connections>
+                                                    <action selector="penAction:" destination="AMQ-wy-5P1" eventType="touchUpInside" id="uXT-C3-aFx"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sW0-ty-c5r">
+                                                <rect key="frame" x="270" y="0.0" width="50" height="50"/>
+                                                <state key="normal" image="line"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="rZd-qv-mwd" firstAttribute="leading" secondItem="YO3-ko-4wq" secondAttribute="trailing" id="0VN-70-5O4"/>
+                                            <constraint firstItem="rZd-qv-mwd" firstAttribute="baseline" secondItem="sW0-ty-c5r" secondAttribute="baseline" id="2RD-xo-AtQ"/>
+                                            <constraint firstItem="07m-zw-wy8" firstAttribute="leading" secondItem="rZd-qv-mwd" secondAttribute="trailing" id="3D1-Np-TcY"/>
+                                            <constraint firstItem="07m-zw-wy8" firstAttribute="centerX" secondItem="lpT-tO-gKf" secondAttribute="centerX" id="BoP-el-Yv4"/>
+                                            <constraint firstAttribute="height" constant="50" id="Dkp-2a-4sz"/>
+                                            <constraint firstItem="rZd-qv-mwd" firstAttribute="top" secondItem="07m-zw-wy8" secondAttribute="top" id="E8t-if-CMr"/>
+                                            <constraint firstItem="sW0-ty-c5r" firstAttribute="leading" secondItem="g9Q-xe-WiW" secondAttribute="trailing" id="TOF-Zp-NJE"/>
+                                            <constraint firstItem="07m-zw-wy8" firstAttribute="top" secondItem="g9Q-xe-WiW" secondAttribute="top" id="WFZ-EB-Gzp"/>
+                                            <constraint firstItem="YO3-ko-4wq" firstAttribute="leading" secondItem="lpT-tO-gKf" secondAttribute="leading" id="dd4-2b-X7j"/>
+                                            <constraint firstItem="g9Q-xe-WiW" firstAttribute="leading" secondItem="07m-zw-wy8" secondAttribute="trailing" id="eYe-az-kEU"/>
+                                            <constraint firstItem="rZd-qv-mwd" firstAttribute="bottom" secondItem="07m-zw-wy8" secondAttribute="bottom" id="gBS-07-59h"/>
+                                            <constraint firstItem="YO3-ko-4wq" firstAttribute="top" secondItem="rZd-qv-mwd" secondAttribute="top" id="kEN-KF-EYw"/>
+                                            <constraint firstItem="YO3-ko-4wq" firstAttribute="top" secondItem="lpT-tO-gKf" secondAttribute="top" id="rYP-K2-4mV"/>
+                                            <constraint firstItem="YO3-ko-4wq" firstAttribute="baseline" secondItem="rZd-qv-mwd" secondAttribute="baseline" id="t73-8l-fCn"/>
+                                            <constraint firstItem="g9Q-xe-WiW" firstAttribute="bottom" secondItem="sW0-ty-c5r" secondAttribute="bottom" id="w3D-l3-38l"/>
+                                            <constraint firstAttribute="bottom" secondItem="YO3-ko-4wq" secondAttribute="bottom" id="xKn-Pg-qap"/>
+                                            <constraint firstItem="YO3-ko-4wq" firstAttribute="firstBaseline" secondItem="rZd-qv-mwd" secondAttribute="firstBaseline" id="xTs-N8-ESd"/>
+                                            <constraint firstItem="rZd-qv-mwd" firstAttribute="firstBaseline" secondItem="sW0-ty-c5r" secondAttribute="firstBaseline" id="yKP-XW-3gL"/>
+                                            <constraint firstAttribute="trailing" secondItem="sW0-ty-c5r" secondAttribute="trailing" id="yRb-o1-YKT"/>
+                                            <constraint firstItem="g9Q-xe-WiW" firstAttribute="top" secondItem="sW0-ty-c5r" secondAttribute="top" id="zEx-Dq-2DH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="lpT-tO-gKf" firstAttribute="leading" secondItem="aUu-e7-qFZ" secondAttribute="leading" id="JlB-eu-84P"/>
+                                    <constraint firstAttribute="bottom" secondItem="lpT-tO-gKf" secondAttribute="bottom" id="KC8-dY-bZc"/>
+                                    <constraint firstAttribute="trailing" secondItem="lpT-tO-gKf" secondAttribute="trailing" id="qDg-DP-rH4"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ub7-UL-SB7" firstAttribute="top" secondItem="vln-uT-jJk" secondAttribute="top" id="697-uw-f8f"/>
-                            <constraint firstAttribute="trailing" secondItem="Ub7-UL-SB7" secondAttribute="trailing" id="Krv-8K-OAO"/>
-                            <constraint firstItem="lpT-tO-gKf" firstAttribute="leading" secondItem="vln-uT-jJk" secondAttribute="leading" id="PQC-gg-nyU"/>
-                            <constraint firstAttribute="trailing" secondItem="aUu-e7-qFZ" secondAttribute="trailing" id="VkD-TJ-HLp"/>
-                            <constraint firstItem="lpT-tO-gKf" firstAttribute="top" secondItem="aUu-e7-qFZ" secondAttribute="bottom" id="foV-uQ-aYX"/>
-                            <constraint firstItem="aUu-e7-qFZ" firstAttribute="top" secondItem="cUe-Wd-xGk" secondAttribute="bottom" id="hCQ-jk-Kgh"/>
-                            <constraint firstItem="fUL-8r-afF" firstAttribute="top" secondItem="lpT-tO-gKf" secondAttribute="bottom" id="hcw-JF-fhB"/>
-                            <constraint firstAttribute="trailing" secondItem="lpT-tO-gKf" secondAttribute="trailing" id="j1I-VP-zvW"/>
-                            <constraint firstItem="lpT-tO-gKf" firstAttribute="top" secondItem="aUu-e7-qFZ" secondAttribute="bottom" id="u2Q-Ga-l7J"/>
-                            <constraint firstItem="aUu-e7-qFZ" firstAttribute="leading" secondItem="vln-uT-jJk" secondAttribute="leading" id="wbm-lH-k8h"/>
+                            <constraint firstItem="Ub7-UL-SB7" firstAttribute="top" secondItem="vln-uT-jJk" secondAttribute="top" id="HGq-sq-2hF"/>
+                            <constraint firstItem="fUL-8r-afF" firstAttribute="top" secondItem="aUu-e7-qFZ" secondAttribute="bottom" id="Qtw-3f-q4E"/>
+                            <constraint firstAttribute="trailing" secondItem="aUu-e7-qFZ" secondAttribute="trailing" id="bkk-z8-wo1"/>
+                            <constraint firstAttribute="trailing" secondItem="Ub7-UL-SB7" secondAttribute="trailing" id="kh4-eb-jJM"/>
+                            <constraint firstItem="aUu-e7-qFZ" firstAttribute="top" secondItem="vln-uT-jJk" secondAttribute="top" id="pMc-nc-Ea8"/>
+                            <constraint firstItem="aUu-e7-qFZ" firstAttribute="leading" secondItem="vln-uT-jJk" secondAttribute="leading" id="sxZ-gF-qY6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dHy-DT-Xra">

@@ -132,6 +132,19 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
         targetImageView?.hidden = false
         dotView?.hidden = false
     }
+    //中身のPartsやドット背景の位置を更新します
+    func update()->Void{
+        left_center_View?.pictureMove()
+        right_center_View?.pictureMove()
+        top_center_View?.pictureMove()
+        bottom_center_View?.pictureMove()
+        left_top_View?.pictureMove()
+        right_top_View?.pictureMove()
+        left_bottom_View?.pictureMove()
+        right_bottom_View?.pictureMove()
+        image_add_View?.pictureMove()
+        dotView?.pictureMove()
+    }
     
     func partsTouchMove(parts: Parts) {
         switch parts {

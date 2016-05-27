@@ -52,6 +52,11 @@ class DotView:UIView{
         self.frame.origin.x = targetImageView!.frame.origin.x - DotView.paddingHorizontal - Parts.marginHorizontal
         self.frame.origin.y = targetImageView!.frame.origin.y - DotView.paddingHorizontal - Parts.marginVertical
     }
+    //引数で受け付けた画像に合わせてリサイズします
+    func sizeUpdate(image:PictureView)->Void{
+        DotView.width = image.frame.width + Parts.marginHorizontal * 2 + DotView.paddingHorizontal*2
+        DotView.height = image.frame.height + Parts.marginVertical * 2 + DotView.paddingVertical*2
+    }
     
     func repaint()->Void{
         self.setNeedsDisplay()
