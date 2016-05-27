@@ -87,8 +87,7 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
     //キャンバスから指を離した時に呼ばれるメソッド
     func canvasTouchUp() {
         do {
-            let i = drawView.getCanvasForNSData()
-            try self.session.sendData(i,toPeers: self.session.connectedPeers,withMode: MCSessionSendDataMode.Unreliable)
+            try self.session.sendData(drawView.getCanvasForNSData(),toPeers: self.session.connectedPeers,withMode: MCSessionSendDataMode.Unreliable)
         } catch {
             print(error)
         }

@@ -27,6 +27,8 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
     var left_bottom_View:LeftBottomParts?
     //右下パーツ
     var right_bottom_View:RightBottomParts?
+    //貼り付けボタン
+    var image_add_View:ImageAddButtonParts?
     //ターゲットのImageView
     weak var targetImageView:PictureView?
     //背景の点線のView
@@ -78,6 +80,10 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
         right_bottom_View = RightBottomParts(superView:superView,targetImageView:imageView,dotView:dotView!)
         right_bottom_View?.partsTouchMove = self
         superView.addSubview(right_bottom_View!)
+        //貼り付けボタン作成
+        image_add_View = ImageAddButtonParts(superView:superView,targetImageView:imageView,dotView:dotView!)
+        image_add_View?.partsTouchMove = self
+        superView.addSubview(image_add_View!)
         
     }
     
@@ -93,6 +99,7 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
         right_top_View?.pictureMove()
         left_bottom_View?.pictureMove()
         right_bottom_View?.pictureMove()
+        image_add_View?.pictureMove()
         dotView?.pictureMove()
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,PartsTouchMove{
     
     /////StoryBoard上のUI関係/////
     //drawView本体
@@ -114,6 +114,7 @@ class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINav
             self.pictureView!.frame = CGRectMake(self.view.frame.width / 2 - 100,self.view.frame.height/2 - 75, 200, 150)
             self.pictureView!.image = didFinishPickingMediaWithInfo[UIImagePickerControllerOriginalImage] as? UIImage
             imageViewAssist = ImageViewSizeAssist(imageView:pictureView!,superView:self.view)
+            imageViewAssist?.image_add_View?.partsTouchMove = self
             self.view.addSubview(pictureView!)
         }
         
@@ -121,9 +122,18 @@ class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func partsTouchMove(parts: Parts) {
+        print("タッチ")
+        switch parts {
+        case parts as ImageAddButtonParts:
+            drawView.drawImage((pictureView?.image)!)
+            print("呼ばれましたPictureView?.image\(pictureView?.image)")
+            
+        default:
+            break
+    }
     
     
-    
-    
+    }
     
 }
