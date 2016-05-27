@@ -9,9 +9,28 @@
 import Foundation
 import UIKit
 
-class ImageAddButtonParts:Parts{
-    override init(superView:UIView,targetImageView:PictureView,dotView:DotView) {
-        super.init(superView: superView, targetImageView: targetImageView, dotView: dotView)
+class ImageAddButtonParts:UIView{
+    
+    var imageAddButtonTouch:ImageAddButtonTouch?
+    
+    var dx:CGFloat = 0
+    var dy:CGFloat = 0
+    
+    let width:CGFloat = 50
+    let height:CGFloat = 50
+    static var marginHorizontal:CGFloat = 0
+    static var marginVertical:CGFloat = 0
+    var isPressed:Bool = false
+    weak var targetImageView:PictureView?
+    weak var superView:UIView?
+    
+    
+    
+    
+    init(superView:UIView,targetImageView:PictureView) {
+        super.init(frame: CGRectZero)
+        self.targetImageView = targetImageView
+        self.superView = superView
         self.frame = CGRectMake(targetImageView.frame.origin.x + targetImageView.frame.width + Parts.marginHorizontal + self.width,targetImageView.frame.origin.y + targetImageView.frame.height - Parts.marginVertical
             ,self.width,self.height)
         self.backgroundColor =  UIColor(red: 0, green: 255/255, blue: 200/255, alpha: 0.3)
@@ -36,16 +55,20 @@ class ImageAddButtonParts:Parts{
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent:event)
         self.backgroundColor =  UIColor(red: 200, green: 0, blue: 0, alpha: 0.3)
-        partsTouchMove?.partsTouchMove(self)
+        imageAddButtonTouch?.imageAddButtonTouch()
     }
     //タッチが終わった処理
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent:event)
         self.backgroundColor = UIColor(red: 0, green: 255/255, blue: 200/255, alpha: 0.3)
     }
-    
+    //画像がドラッグされている時の処理
     func pictureMove() {
         self.frame.origin.x = targetImageView!.frame.origin.x + targetImageView!.frame.width + Parts.marginHorizontal + self.width
         self.frame.origin.y = targetImageView!.frame.origin.y + targetImageView!.frame.height - Parts.marginVertical
     }
 }
+protocol ImageAddButtonTouch {
+    func imageAddButtonTouch()
+}
+

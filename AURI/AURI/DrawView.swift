@@ -10,23 +10,14 @@ import Foundation
 import UIKit
 
 class Canvas:NSObject,NSCoding{
-    var path:UIBezierPath?
-    var color:UIColor?
-    var img:UIImage?
+    var path:UIBezierPath
+    var color:UIColor
     var imgX:CGFloat = 0
     var imgY:CGFloat = 0
     
-    init(path:UIBezierPath,color:UIColor,img:UIImage) {
-        super.init()
-        self.path = path
-        self.color = color
-        self.img = img
-    }
     init(path:UIBezierPath,color:UIColor) {
-        super.init()
         self.path = path
         self.color = color
-        self.img = nil
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -35,45 +26,38 @@ class Canvas:NSObject,NSCoding{
     }
     
     required init(coder aDecoder: NSCoder) {
-        self.path = aDecoder.decodeObjectForKey("path") as? UIBezierPath
-        self.color = aDecoder.decodeObjectForKey("color") as? UIColor
+        self.path = aDecoder.decodeObjectForKey("path") as! UIBezierPath
+        self.color = aDecoder.decodeObjectForKey("color") as! UIColor
     }
-    
 }
 
 class DrawableView: UIView {
     var canvasTouchUpDelegate: CanvasTouchUpDelegate?
     
-    var path:UIBezierPath?
+    var path:UIBezierPath!
     var penColor:UIColor = UIColor.blackColor()
-    var img:UIImage?
     var penSize:Int = 5
     var paths:[UIBezierPath] = []
     var colors:[UIColor] = []
     var imgs:[UIImage] = []
-    var canvas:Canvas?
-    
-    var lastTouchPoint:CGPoint = CGPointMake(0, 0)
-    var posX :CGFloat = 0
-    var posY :CGFloat = 0
+    var imgFrames:[CGRect]=[]
+    //通信用アイテム
+    var canvas:Canvas!
+    var pictureViewRect:CGRect = CGRectZero
 
     
     
     override func drawRect(rect: CGRect) {
-       
-//        var recta = CGRectMake(0, 0, 1, 1);
-//         UIGraphicsBeginImageContextWithOptions(recta.size, false, 0.0)
-//        UIGraphicsBeginImageContext(recta.size);
         let context:CGContextRef = UIGraphicsGetCurrentContext()!
-        if !imgs.isEmpty{
-            // 現在のグラフィックスコンテキストを取得する
-            CGContextDrawImage(context,CGRectMake(0,0,200,200),self.img?.CGImage)
-            print("imgsが呼ばれました")
-            print(img?.CGImage)
-//            //5.UIImageの取得
-//            let img:CGImageRef = CGBitmapContextCreateImage(context)!
-//            self.imageView.image = UIImage(CGImage: img)
+        
+        if !imgs.isEmpty && !imgFrames.isEmpty{
+            for i in 0 ..< imgs.count {
+                //                CGContextTranslateCTM(context, 0,self.pictureViewRect.size.height);
+                //                CGContextScaleCTM(context, 1, -1);
+                CGContextDrawImage(context,imgFrames[i],imgs[i].CGImage)
+            }
         }
+
         
         if !paths.isEmpty && !colors.isEmpty{
             for i in 0 ..< paths.count {
@@ -85,48 +69,26 @@ class DrawableView: UIView {
             penColor.setStroke()
             i.stroke()
         }
-    }
+        
+           }
     
     // タッチされた時の処理
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let currentPoint = touches.first!.locationInView(self)
-        self.posX = lastTouchPoint.x
-        self.posY = lastTouchPoint.y
+        let x = touches.first!.locationInView(self).x
+        let y = touches.first!.locationInView(self).y
         //Pathを生成します
         self.path = UIBezierPath();
         //ペンサイズ設定です
-        self.path!.lineWidth = CGFloat(self.penSize)
-        self.path!.lineCapStyle = CGLineCap.Round
-        self.path!.lineJoinStyle = CGLineJoin.Round
-        self.path!.moveToPoint(CGPoint(x: posX-1,y: posY-1))
-        
-        lastTouchPoint = currentPoint;
+        self.path.lineWidth = CGFloat(self.penSize)
+        self.path.lineCapStyle = CGLineCap.Round
+        self.path.lineJoinStyle = CGLineJoin.Round
+        self.path.moveToPoint(CGPoint(x: x-1,y: y-1))
     }
     
     // タッチが動いた時の処理
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let touchEvent = touches.first!
-        let currentPoint = touchEvent.locationInView(self)
-        // ドラッグ前の座標
-        let pre = touchEvent.previousLocationInView(self)
-        let preDx = touchEvent.previousLocationInView(self).x
-        let preDy = touchEvent.previousLocationInView(self).y
-        // ドラッグ後の座標
-        let new = touchEvent.locationInView(self)
-        let newDx = touchEvent.locationInView(self).x
-        let newDy = touchEvent.locationInView(self).y
-        
-        var lllPoint:CGPoint = CGPointMake(newDx - preDx,newDy-preDy)
-        
-        var midPoint:CGPoint = CGPointMake((lastTouchPoint.x + currentPoint.x) / 2,(lastTouchPoint.y + currentPoint.y) / 2)
-   
-        self.path?.addQuadCurveToPoint(midPoint, controlPoint:lastTouchPoint)
-       
-        lastTouchPoint = currentPoint
-        
-//        print("preDx\(preDx)")
-//        print("newDx\(newDx)")
-//        print("---")
+        let currentPoint = touches.first!.locationInView(self)
+        self.path.addLineToPoint(currentPoint)
         self.setNeedsDisplay()
     }
     
@@ -134,11 +96,11 @@ class DrawableView: UIView {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let currentPoint = touches.first!.locationInView(self)
         //現在の色をセット
+        self.path.addLineToPoint(currentPoint)
         self.colors.append(self.penColor)
-        self.path?.addQuadCurveToPoint(currentPoint, controlPoint:lastTouchPoint)
-        self.paths.append(self.path!)
+        self.paths.append(self.path)
         self.setNeedsDisplay()
-        self.canvas = Canvas(path:self.path!, color:self.penColor)
+        self.canvas = Canvas(path:self.path, color:self.penColor)
         self.canvasTouchUpDelegate?.canvasTouchUp()
     }
     //キャンバスを削除します
@@ -163,12 +125,15 @@ class DrawableView: UIView {
         let s = NSKeyedUnarchiver.unarchiveObjectWithData(data)
         self.paths.append((s?.path)!)
         self.colors.append((s?.color)!)
+//        self.imgs.append((s?.img)!)
         self.setNeedsDisplay()
     }
-    //画像を受け取り、imgs配列に追加します
-    func drawImage(image:UIImage)->Void{
+    //画像を仮引数で受け取り、プロパティimgs配列に追加します
+    func addImage(image:UIImage,rect:CGRect)->Void{
+        self.imgFrames.append(rect)
         self.imgs.append(image)
         self.setNeedsDisplay()
+        print(self.imgs.count)
     }
     
     

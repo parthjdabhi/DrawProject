@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,PartsTouchMove{
+class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImageAddButtonTouch{
     
     /////StoryBoard上のUI関係/////
     //drawView本体
@@ -108,32 +108,33 @@ class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINav
             
             //didFinishPickingMediaWithInfo通して渡された情報(選択された画像情報が入っている？)をUIImageにCastする
             //そしてそれを宣言済みのimageViewへ放り込む
+            //pictureViewが1度も生成されていない場合
             if self.pictureView == nil{
                 self.pictureView = PictureView(superView:self.view,trashButton:trashButton,trashArea:self.trashArea)
+            }else if self.pictureView?.hidden == true{//非表示の場合
+                self.pictureView?.hidden = false
             }
+            
             self.pictureView!.frame = CGRectMake(self.view.frame.width / 2 - 100,self.view.frame.height/2 - 75, 200, 150)
             self.pictureView!.image = didFinishPickingMediaWithInfo[UIImagePickerControllerOriginalImage] as? UIImage
-            imageViewAssist = ImageViewSizeAssist(imageView:pictureView!,superView:self.view)
-            imageViewAssist?.image_add_View?.partsTouchMove = self
-            self.view.addSubview(pictureView!)
+            //imageViewAssistが1度も生成されていない場合
+            if self.imageViewAssist == nil{
+                imageViewAssist = ImageViewSizeAssist(imageView:pictureView!,superView:self.view)
+                imageViewAssist?.image_add_View?.imageAddButtonTouch = self
+            }else if imageViewAssist?.hidden == true{//非表示の場合
+                imageViewAssist?.visible()
+            }
+                self.view.addSubview(pictureView!)
         }
         
         //写真選択後にカメラロール表示ViewControllerを引っ込める動作
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func partsTouchMove(parts: Parts) {
-        print("タッチ")
-        switch parts {
-        case parts as ImageAddButtonParts:
-            drawView.drawImage((pictureView?.image)!)
-            print("呼ばれましたPictureView?.image\(pictureView?.image)")
-            
-        default:
-            break
-    }
-    
-    
+    func imageAddButtonTouch() {
+        drawView.addImage((pictureView?.image)!,rect:(pictureView?.frame)!)
+        //AssistView　およぼ PictureViewを非表示にします
+        imageViewAssist?.invisible()
     }
     
 }
