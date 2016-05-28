@@ -11,8 +11,8 @@ import UIKit
 
 class DotView:UIView{
     
-    static var width:CGFloat = 0
-    static var height:CGFloat = 0
+    var width:CGFloat = 0
+    var height:CGFloat = 0
     static var paddingHorizontal:CGFloat = 10
     static var paddingVertical:CGFloat = 10
     
@@ -23,7 +23,8 @@ class DotView:UIView{
         super.init(frame:CGRectZero)
         self.backgroundColor = UIColor.clearColor()
         self.targetImageView = imageView
-        self.frame = CGRectMake(imageView.frame.origin.x - Parts.marginHorizontal - DotView.paddingHorizontal,imageView.frame.origin.y - Parts.marginVertical - DotView.paddingVertical,DotView.width, DotView.height)
+        self.frame = CGRectMake(imageView.frame.origin.x - Parts.marginHorizontal - DotView.paddingHorizontal,imageView.frame.origin.y - Parts.marginVertical - DotView.paddingVertical,imageView.frame.width + Parts.marginHorizontal * 2 + DotView.paddingHorizontal*2
+            ,imageView.frame.height + Parts.marginVertical * 2 + DotView.paddingVertical*2)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +52,10 @@ class DotView:UIView{
     func pictureMove() {
         self.frame.origin.x = targetImageView!.frame.origin.x - DotView.paddingHorizontal - Parts.marginHorizontal
         self.frame.origin.y = targetImageView!.frame.origin.y - DotView.paddingHorizontal - Parts.marginVertical
+    }
+    //引数で受け付けた画像に合わせてリサイズします
+    func sizeUpdate(image:PictureView)->Void{
+        self.frame.size = CGSizeMake(image.frame.width + Parts.marginHorizontal * 2 + DotView.paddingHorizontal*2,image.frame.height + Parts.marginVertical * 2 + DotView.paddingVertical*2)
     }
     
     func repaint()->Void{

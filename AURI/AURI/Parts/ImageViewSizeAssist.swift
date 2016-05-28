@@ -11,6 +11,8 @@ import UIKit
 
 class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
     
+    var hidden:Bool = false
+    
     //左中央のパーツ
     var left_center_View:LeftCenterParts?
     //右中央のパーツ
@@ -27,6 +29,8 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
     var left_bottom_View:LeftBottomParts?
     //右下パーツ
     var right_bottom_View:RightBottomParts?
+    //貼り付けボタン
+    var image_add_View:ImageAddButtonParts?
     //ターゲットのImageView
     weak var targetImageView:PictureView?
     //背景の点線のView
@@ -36,9 +40,6 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
         //Partsの初期設定を行います//
         Parts.marginVertical = 0
         Parts.marginHorizontal = 0
-        //DotViewの初期設定を行います//
-        DotView.width = imageView.frame.width + Parts.marginHorizontal * 2 + DotView.paddingHorizontal*2
-        DotView.height = imageView.frame.height + Parts.marginVertical * 2 + DotView.paddingVertical*2
         ///////////////////////////////////
         // ImageViewの初期化
         self.targetImageView = imageView
@@ -78,6 +79,9 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
         right_bottom_View = RightBottomParts(superView:superView,targetImageView:imageView,dotView:dotView!)
         right_bottom_View?.partsTouchMove = self
         superView.addSubview(right_bottom_View!)
+        //貼り付けボタン作成
+        image_add_View = ImageAddButtonParts(superView:superView,targetImageView:imageView)
+        superView.addSubview(image_add_View!)
         
     }
     
@@ -93,7 +97,52 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
         right_top_View?.pictureMove()
         left_bottom_View?.pictureMove()
         right_bottom_View?.pictureMove()
+        image_add_View?.pictureMove()
         dotView?.pictureMove()
+    }
+    func invisible()->Void{
+        print("inVisible!!")
+        self.hidden = true
+        left_center_View?.hidden = true
+        right_center_View?.hidden = true
+        top_center_View?.hidden = true
+        bottom_center_View?.hidden = true
+        left_top_View?.hidden = true
+        right_top_View?.hidden = true
+        left_bottom_View?.hidden = true
+        right_bottom_View?.hidden = true
+        image_add_View?.hidden = true
+        targetImageView?.hidden = true
+        dotView?.hidden = true
+    }
+    func visible()->Void{
+        self.hidden = false
+        left_center_View?.hidden = false
+        right_center_View?.hidden = false
+        top_center_View?.hidden = false
+        bottom_center_View?.hidden = false
+        left_top_View?.hidden = false
+        right_top_View?.hidden = false
+        left_bottom_View?.hidden = false
+        right_bottom_View?.hidden = false
+        image_add_View?.hidden = false
+        targetImageView?.hidden = false
+        dotView?.hidden = false
+    }
+    //中身のPartsやドット背景の位置を更新します
+    func update(pictureView:PictureView)->Void{
+        left_center_View?.pictureMove()
+        right_center_View?.pictureMove()
+        top_center_View?.pictureMove()
+        bottom_center_View?.pictureMove()
+        left_top_View?.pictureMove()
+        right_top_View?.pictureMove()
+        left_bottom_View?.pictureMove()
+        right_bottom_View?.pictureMove()
+        image_add_View?.pictureMove()
+        dotView?.sizeUpdate(pictureView)
+        dotView?.pictureMove()
+        dotView?.repaint()
     }
     
     func partsTouchMove(parts: Parts) {
