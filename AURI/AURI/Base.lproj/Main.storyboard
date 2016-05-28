@@ -221,6 +221,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PkC-vc-1SD">
+                                <rect key="frame" x="265" y="0.0" width="55" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="ESe-yN-z0t"/>
+                                    <constraint firstAttribute="height" constant="60" id="vas-03-cdO"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vOP-q7-oZT" customClass="DrawableView" customModule="AURI" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" red="0.9182453156" green="0.91826683279999999" blue="0.91825520989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -229,7 +237,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Wp6-9e-bAz" firstAttribute="top" secondItem="vOP-q7-oZT" secondAttribute="bottom" id="03y-vZ-2dW"/>
+                            <constraint firstItem="PkC-vc-1SD" firstAttribute="top" secondItem="s6b-ye-bOy" secondAttribute="top" id="9mv-bH-uSh"/>
                             <constraint firstItem="vOP-q7-oZT" firstAttribute="top" secondItem="Zun-JV-ewN" secondAttribute="bottom" id="Iff-NC-m5j"/>
+                            <constraint firstAttribute="trailing" secondItem="PkC-vc-1SD" secondAttribute="trailing" id="gCW-9g-DMT"/>
                             <constraint firstItem="vOP-q7-oZT" firstAttribute="leading" secondItem="s6b-ye-bOy" secondAttribute="leading" id="iIk-Cp-eX1"/>
                             <constraint firstAttribute="trailing" secondItem="vOP-q7-oZT" secondAttribute="trailing" id="yXe-Lr-TIw"/>
                         </constraints>
@@ -237,12 +247,18 @@
                     <navigationItem key="navigationItem" id="D3Q-oL-Xqd">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="trash" id="j5L-s0-ejg"/>
-                            <barButtonItem systemItem="add" id="JuM-Xn-ilW"/>
+                            <barButtonItem systemItem="add" id="JuM-Xn-ilW">
+                                <connections>
+                                    <action selector="imageAddButtonAction:" destination="7eD-Cu-Hdq" id="y6F-7z-6gr"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="drawView" destination="vOP-q7-oZT" id="irT-rl-TuS"/>
+                        <outlet property="trashArea" destination="PkC-vc-1SD" id="12i-PN-BjO"/>
+                        <outlet property="trashButton" destination="j5L-s0-ejg" id="TIk-Dq-EOC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bA4-cr-L5k" userLabel="First Responder" sceneMemberID="firstResponder"/>

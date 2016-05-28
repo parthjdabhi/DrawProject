@@ -29,6 +29,7 @@ class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINav
     var pictureView:PictureView?
     var imageViewAssist:ImageViewSizeAssist?
     
+    //ゴミ箱判定エリア
     @IBOutlet weak var trashArea: UIView!
     
     /////------/////
@@ -131,7 +132,7 @@ class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINav
         //写真選択後にカメラロール表示ViewControllerを引っ込める動作
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+    //画像貼り付けボタンが押された時の処理
     func imageAddButtonTouch() {
         drawView.addImage((pictureView?.image)!,rect:(pictureView?.frame)!)
         //AssistView　およぼ PictureViewを非表示にします
