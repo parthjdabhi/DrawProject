@@ -40,9 +40,6 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
         //Partsの初期設定を行います//
         Parts.marginVertical = 0
         Parts.marginHorizontal = 0
-        //DotViewの初期設定を行います//
-        DotView.width = imageView.frame.width + Parts.marginHorizontal * 2 + DotView.paddingHorizontal*2
-        DotView.height = imageView.frame.height + Parts.marginVertical * 2 + DotView.paddingVertical*2
         ///////////////////////////////////
         // ImageViewの初期化
         self.targetImageView = imageView
@@ -133,7 +130,7 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
         dotView?.hidden = false
     }
     //中身のPartsやドット背景の位置を更新します
-    func update()->Void{
+    func update(pictureView:PictureView)->Void{
         left_center_View?.pictureMove()
         right_center_View?.pictureMove()
         top_center_View?.pictureMove()
@@ -143,7 +140,9 @@ class ImageViewSizeAssist:PictureTouchMove,PartsTouchMove{
         left_bottom_View?.pictureMove()
         right_bottom_View?.pictureMove()
         image_add_View?.pictureMove()
+        dotView?.sizeUpdate(pictureView)
         dotView?.pictureMove()
+        dotView?.repaint()
     }
     
     func partsTouchMove(parts: Parts) {

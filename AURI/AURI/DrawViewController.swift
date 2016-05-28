@@ -123,8 +123,7 @@ class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINav
                 imageViewAssist?.image_add_View?.imageAddButtonTouch = self
             }else if imageViewAssist?.hidden == true{//非表示の場合
                 imageViewAssist?.visible()
-                imageViewAssist?.dotView?.sizeUpdate((pictureView)!)
-                imageViewAssist?.update()
+                imageViewAssist?.update(pictureView!)
             }
                 self.view.addSubview(pictureView!)
         }
