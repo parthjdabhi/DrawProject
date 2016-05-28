@@ -127,19 +127,29 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
     func session(session: MCSession, didReceiveData data: NSData,fromPeer peerID: MCPeerID)  {
         // This needs to run on the main queue
         dispatch_async(dispatch_get_main_queue()) {
-//            switch data{
-//                case data is Canvas:
-//                    self.drawView.addCanvas(data)
-//                print("Canvas型で受信!")
-//                case data is UIImage:
-//                    self.drawView.addImg(data)
-//                
+            print("データ受信")
+            let s = NSKeyedUnarchiver.unarchiveObjectWithData(data)
+//            let a = data as! Canvas
+//            switch s{
+//                case s is Canvas:
+//                print("Canvasが送信されました")
+////                    self.drawView.addCanvas(data)
+//                case s is CanvasImage:
+//                 print("CanvasImageが送信されました")
+////                   self.drawView.addCanvasImage(data)
 //                default:
-//                    break
+//                    print("該当なしです...")
 //                }
-            print("画像データ受信")
-            self.drawView.addImg(data)
-            self.drawView.repaint()
+            if (s as? Canvas) != nil{
+                print("Canvasが送信されました")
+                self.drawView.addCanvas(data)
+            }else if (s as? CanvasImage) != nil{
+                print("canvasImageが送信されました")
+                self.drawView.addCanvasImage(data)
+            }else{
+                print("該当なしです...")
+            }
+            
         }
     }
     
@@ -168,19 +178,19 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
     }
     //キャンバスから指を離した時に呼ばれるメソッド
     func canvasTouchUp() {
-//        do {
-//            try self.session.sendData(drawView.getCanvasForNSData(),toPeers: self.session.connectedPeers,withMode: MCSessionSendDataMode.Unreliable)
-//        } catch {
-//            print(error)
-//        }
-//        print("指を離したのでデータを送信")
-//        print(drawView.getCanvasForNSData())
+        do {
+            try self.session.sendData(drawView.getCanvasForNSData(),toPeers: self.session.connectedPeers,withMode: MCSessionSendDataMode.Unreliable)
+        } catch {
+            print(error)
+        }
+        print("指を離したのでデータを送信")
 
     }
     //画像貼り付けボタンが押された時の処理
     func imageAddButtonTouch() {
         print("画像データを送信")
-        drawView.addImage((pictureView?.image)!,rect:(pictureView?.frame)!)
+        let canvasImage = CanvasImage(image:pictureView!.image!, frame:NSValue(CGRect: pictureView!.frame))
+        drawView.drawImage(canvasImage)
         //AssistView　およぼ PictureViewを非表示にします
         imageViewAssist?.invisible()
         do {

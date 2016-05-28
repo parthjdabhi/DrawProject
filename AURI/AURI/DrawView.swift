@@ -34,6 +34,11 @@ class CanvasImage:NSObject,NSCoding{
     var frame:NSValue = NSValue(CGRect:CGRectZero)
     var image:UIImage
     
+    init(image:UIImage,frame:NSValue) {
+        self.image = image
+        self.frame = frame
+    }
+    
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.frame, forKey:"frame")
         aCoder.encodeObject(self.image, forKey:"image")
@@ -55,9 +60,10 @@ class DrawableView: UIView {
     var colors:[UIColor] = []
     var imgs:[UIImage] = []
     var imgFrames:[CGRect]=[]
+    
     //通信用アイテム
     var canvas:Canvas!
-    var img:UIImage!
+    var canvasImage:CanvasImage!
 
     
     
@@ -65,11 +71,8 @@ class DrawableView: UIView {
         if !imgs.isEmpty && !imgFrames.isEmpty{
             for i in 0 ..< imgs.count {
                 imgs[i].drawInRect(imgFrames[i])
-                print("画像が描画されました")
             }
         }
-
-        
         if !paths.isEmpty && !colors.isEmpty{
             for i in 0 ..< paths.count {
                 colors[i].setStroke()
@@ -80,8 +83,7 @@ class DrawableView: UIView {
             penColor.setStroke()
             i.stroke()
         }
-        
-           }
+    }
     
     // タッチされた時の処理
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -132,32 +134,35 @@ class DrawableView: UIView {
         let canvas = self.canvas
         return NSKeyedArchiver.archivedDataWithRootObject(canvas)
     }
-    //自分のpaths配列 または colors配列に追加します
+    //自分のpaths配列 および colors配列に仮引数で受けたNSdata型を展開し追加します
     func addCanvas(data:NSData)->Void{
         let s = NSKeyedUnarchiver.unarchiveObjectWithData(data)
         self.paths.append((s?.path)!)
         self.colors.append((s?.color)!)
         self.setNeedsDisplay()
     }
-    //自分の画像を追加
-    func addImg(data:NSData)->Void{
+    //自分(DrawView)に描かれているUIImageやそのCGRect情報をNSData型で返します
+    func getImageForNSData()->NSData{
+        let canvasImage = self.canvasImage
+        return NSKeyedArchiver.archivedDataWithRootObject(canvasImage)
+    }
+    //自分のimgs配列 および imgFrames配列に仮引数で受けたNSdata型を展開し追加します
+    func addCanvasImage(data:NSData)->Void{
         let s = NSKeyedUnarchiver.unarchiveObjectWithData(data)
-        self.imgs.append(s as! UIImage)
+        let a = s as! CanvasImage
+        self.imgs.append(a.image)
+        self.imgFrames.append(a.frame.CGRectValue())
         print("画像を貼り付け！")
         print("imgs.count->\(imgs.count)")
          print("imgFrames->\(imgFrames.count)")
         self.setNeedsDisplay()
     }
-    //自分に張り付いているimgをNSData型で返します
-    func getImageForNSData()->NSData{
-        let img = self.img
-        return NSKeyedArchiver.archivedDataWithRootObject(img)
-    }
+   
     //画像を仮引数で受け取り、プロパティimgs配列に追加します
-    func addImage(image:UIImage,rect:CGRect)->Void{
-        self.img = image
-        self.imgFrames.append(rect)
-        self.imgs.append(image)
+    func drawImage(canvasImage:CanvasImage)->Void{
+        self.canvasImage = canvasImage
+        self.imgFrames.append(canvasImage.frame.CGRectValue())
+        self.imgs.append(canvasImage.image)
         self.setNeedsDisplay()
     }
     func repaint()->Void{

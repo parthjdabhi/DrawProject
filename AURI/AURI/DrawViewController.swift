@@ -134,7 +134,8 @@ class DrawViewController: UIViewController,UIImagePickerControllerDelegate,UINav
     }
     //画像貼り付けボタンが押された時の処理
     func imageAddButtonTouch() {
-        drawView.addImage((pictureView?.image)!,rect:(pictureView?.frame)!)
+        let canvasImage = CanvasImage(image:pictureView!.image!, frame:NSValue(CGRect: pictureView!.frame))
+            drawView.drawImage(canvasImage)
         //AssistView　およぼ PictureViewを非表示にします
         imageViewAssist?.invisible()
     }
