@@ -126,20 +126,11 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
     // peerからデータを受信した時に呼ばる処理
     func session(session: MCSession, didReceiveData data: NSData,fromPeer peerID: MCPeerID)  {
         // This needs to run on the main queue
-        dispatch_async(dispatch_get_main_queue()) {
+    
+        
+        dispatch_async(dispatch_get_main_queue(), {
             print("データ受信")
             let s = NSKeyedUnarchiver.unarchiveObjectWithData(data)
-//            let a = data as! Canvas
-//            switch s{
-//                case s is Canvas:
-//                print("Canvasが送信されました")
-////                    self.drawView.addCanvas(data)
-//                case s is CanvasImage:
-//                 print("CanvasImageが送信されました")
-////                   self.drawView.addCanvasImage(data)
-//                default:
-//                    print("該当なしです...")
-//                }
             if (s as? Canvas) != nil{
                 print("Canvasが送信されました")
                 self.drawView.addCanvas(data)
@@ -149,8 +140,22 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
             }else{
                 print("該当なしです...")
             }
-            
-        }
+        })
+        
+        
+//        print("データ受信")
+//        let s = NSKeyedUnarchiver.unarchiveObjectWithData(data)
+//        if (s as? Canvas) != nil{
+//            print("Canvasが送信されました")
+//            self.drawView.addCanvas(data)
+//        }else if (s as? CanvasImage) != nil{
+//            print("canvasImageが送信されました")
+//            self.drawView.addCanvasImage(data)
+//        }else{
+//            print("該当なしです...")
+//        }
+    
+    
     }
     
     // The following methods do nothing, but the MCSessionDelegate protocol
@@ -193,11 +198,17 @@ class PairDrawViewController: UIViewController,MCBrowserViewControllerDelegate,M
         drawView.drawImage(canvasImage)
         //AssistView　およぼ PictureViewを非表示にします
         imageViewAssist?.invisible()
-        do {
-            try self.session.sendData(drawView.getImageForNSData(),toPeers: self.session.connectedPeers,withMode: MCSessionSendDataMode.Unreliable)
-        } catch {
-            print(error)
-        }
-        print(drawView.getImageForNSData())
+        //処理を分散
+        let queue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0);
+        dispatch_async(queue,{
+            do {
+                try self.session.sendData(self.drawView.getImageForNSData(),toPeers: self.session.connectedPeers,withMode: MCSessionSendDataMode.Unreliable)
+            } catch {
+                print(error)
+            }
+        })
+
+        
+        
     }
 }
